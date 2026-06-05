@@ -1,3 +1,7 @@
+## 0.9.0 June 4, 2026
+
+- Add `bundleMethod` option. Can be set to `pnpm-deploy` to bundle the app with `pnpm deploy` 
+
 ## 0.8.2 April 20, 2022
 
 - Update tar
