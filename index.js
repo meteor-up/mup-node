@@ -109,6 +109,7 @@ module.exports = {
     setDefault(appConfig, ['startScript'], 'start');
     setDefault(appConfig, ['nodeVersion'], 'latest');
     setDefault(appConfig, ['deployCheckWaitTime'], 60);
+    setDefault(appConfig, ['bundleMethod'], 'tar');
 
     return config;
   },

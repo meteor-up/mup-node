@@ -14,6 +14,7 @@ var schema = joi.object().keys({
     [joi.string().allow(""), joi.number(), joi.bool()]
   ),
   startScript: joi.string(),
+  bundleMethod: joi.string().valid('tar', 'pnpm-deploy'),
   docker: joi.object().keys({
     args: joi.array().items(joi.string()),
     networks: joi.array().items(joi.string()),

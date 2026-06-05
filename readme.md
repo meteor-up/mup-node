@@ -56,6 +56,9 @@ Mup will upload your app, build a docker container, and run it.
 
 `mup-node` copies the app's files to the server. The `.git` and `node_module` directories are ignored.Additional directories can be ignored by creating a `.mupignore` file in your app's root folder. `.mupignore` uses the same syntax as `.gitignore`.
 
+An alternative bundling method is to use `pnpm deploy`, by setting the option `app.bundleMethod` to `pnpm-deploy` (the default is `tar`, with the behavior described above). With `pnpm deploy`, all of the npm dependencies are included in the bundle, which could cause problems for native dependencies.
+
+
 ## Building Image
 
 The base image is `node:<node version>`. As long as the package.json doesn't change, the `node_modules` is cached between deploys.
@@ -88,7 +91,9 @@ module.exports = {
     // much time, mup rolls back to the previous version. Set to -1 to disable.
     deployCheckWaitTime: 60,
     // NPM script to run when starting the app
-    startScript: 'start:production'
+    startScript: 'start:production',
+    // How the deployment bundle is created. Can be 'tar' (default) or 'pnpm-deploy'
+    bundleMethod: 'tar',
     docker: {
       args: ['--network=net'],
       networks: ['net2', 'net3'],

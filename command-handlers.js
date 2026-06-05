@@ -41,9 +41,9 @@ module.exports = {
     return api.runTaskList(list, sessions, { verbose: api.verbose });
   },
   build(api) {
-    var appPath = api.getConfig().app.path;
+    var appConfig = api.getConfig().app;
 
-    return builder(appPath, tmpBuildPath(appPath, api), api);
+    return builder(appConfig.path, tmpBuildPath(appConfig.path, api), api, appConfig.bundleMethod);
   },
   push(api, nodemiral) {
     var {
@@ -78,6 +78,7 @@ module.exports = {
         buildInstructions: appConfig.docker.buildInstructions,
         postInstallScript: postInstallScript,
         packageLock,
+        prebuiltDependencies: appConfig.bundleMethod === 'pnpm-deploy',
         privateRegistry: privateDockerRegistry,
         imagePrefix: utils.getImagePrefix(privateDockerRegistry),
         imageName: utils.getImageName(appConfig)
