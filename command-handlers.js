@@ -78,7 +78,7 @@ module.exports = {
         buildInstructions: appConfig.docker.buildInstructions,
         postInstallScript: postInstallScript,
         packageLock,
-        prebuiltDependencies: appConfig.bundleMethod === 'pnpm-deploy',
+        prebuiltDependencies: appConfig.bundleMethod !== 'tar',
         privateRegistry: privateDockerRegistry,
         imagePrefix: utils.getImagePrefix(privateDockerRegistry),
         imageName: utils.getImageName(appConfig)

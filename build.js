@@ -110,5 +110,9 @@ module.exports = function (appPath, tmpPath, api, bundleMethod) {
     return buildWithPnpmDeploy(appPath, tmpPath, api, bundlePath);
   }
 
+  if (bundleMethod === 'prebuilt') {
+    return tarDirectory(path.resolve(api.getBasePath(), appPath), bundlePath);
+  }
+
   return buildWithTar(appPath, tmpPath, api, bundlePath);
 }

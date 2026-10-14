@@ -1,3 +1,6 @@
+## 0.10.0 October 14, 2026
+- Add `prebuilt` bundle method
+
 ## 0.9.0 June 4, 2026
 
 - Add `bundleMethod` option. Can be set to `pnpm-deploy` to bundle the app with `pnpm deploy` 

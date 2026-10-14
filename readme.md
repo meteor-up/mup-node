@@ -56,8 +56,10 @@ Mup will upload your app, build a docker container, and run it.
 
 `mup-node` copies the app's files to the server. The `.git` and `node_module` directories are ignored.Additional directories can be ignored by creating a `.mupignore` file in your app's root folder. `.mupignore` uses the same syntax as `.gitignore`.
 
-An alternative bundling method is to use `pnpm deploy`, by setting the option `app.bundleMethod` to `pnpm-deploy` (the default is `tar`, with the behavior described above). With `pnpm deploy`, all of the npm dependencies are included in the bundle, which could cause problems for native dependencies.
-
+Two alternative methods can be used by changing the `app.bundleMethod` option:
+- `tar` is the default method described above
+- `pnpm-deploy` runs `pnpm deploy` and uses the resulting folder
+- `prebuilt` uses the folder as is. The folder must have any npm dependencies the app needs already installed.
 
 ## Building Image
 
